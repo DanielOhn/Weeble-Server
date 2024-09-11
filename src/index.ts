@@ -103,4 +103,4 @@ let min = sec * 60;
 let hour = min * 60;
 let day = hour * 24;
 
-setInterval(startWeeble, min * 5)
+setInterval(startWeeble, hour * 6)
