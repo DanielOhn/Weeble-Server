@@ -1,17 +1,19 @@
 
 import express, { Express, Request, Response } from "express";
-import dotenv from "dotenv";
+import { Anime } from './sakugabooru-list.json';
 
-import { Anime } from './sakugabooru-list.json'
-import cors from "cors"
+// import dotenv from "dotenv";
+// import cors from "cors"
 
-dotenv.config();
+
 
 const app: Express = express();
 const port = process.env.PORT || 3005;
-//var cors = require('cors')
 
+var cors = require('cors')
+var dotenv = require('dotenv')
 
+dotenv.config();
 app.use(cors())
 // {title: string, name: string, vid_list: object[]}
 let weeble: any | undefined = undefined
@@ -36,7 +38,7 @@ const getWeebleData = (anime: any, title: String) => {
         .then((resp) => {
           return resp.json().then((data) => {
             console.log("DATA: ", data);
-            //
+
             weeble = { "Weeble": { "title": title, "name": anime.name, "vid_list": data } }
             //res.send({ "Weeble": { "title": title, "name": anime.name, "vid_list": data } })
             return data
@@ -50,7 +52,7 @@ const getWeebleData = (anime: any, title: String) => {
   }
 
   let data = fetch_data()
-  console.log(data)
+  //console.log(data)
   return data
 }
 
@@ -81,8 +83,6 @@ const convertTitle = (ani: String) => {
 
 
 app.get("/", (req: Request, res: Response) => {
-
-
   
   if (weeble) {
     res.json(weeble)
