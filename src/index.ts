@@ -13,7 +13,11 @@ const port = process.env.PORT || 3005;
 // var cors = require('cors')
 // var dotenv = require('dotenv')
 
-dotenv.config();
+console.log(process.env.PORT)
+if (process.env.NODE_ENV === "Dev") 
+  dotenv.config();
+
+
 app.use(cors())
 // {title: string, name: string, vid_list: object[]}
 let weeble: any | undefined = undefined
