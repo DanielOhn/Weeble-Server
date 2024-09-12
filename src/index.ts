@@ -2,16 +2,16 @@
 import express, { Express, Request, Response } from "express";
 import { Anime } from './sakugabooru-list.json';
 
-// import dotenv from "dotenv";
-// import cors from "cors"
+import dotenv from "dotenv";
+import cors from "cors"
 
 
 
 const app: Express = express();
 const port = process.env.PORT || 3005;
 
-var cors = require('cors')
-var dotenv = require('dotenv')
+// var cors = require('cors')
+// var dotenv = require('dotenv')
 
 dotenv.config();
 app.use(cors())
